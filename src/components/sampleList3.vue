@@ -1,5 +1,5 @@
 <template>
-  <div class="container">샘플리스트3</div>
+  <div class="container">샘플리스트4</div>
 </template>
 
 <script>

@@ -4,7 +4,7 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
   state:{
     loading:true,
-    fontSize: 9,
+    fontSize: 12,
     thisMonth : new Date().getMonth()+1, //10
     thisDate : new Date().getDate(),    //16
     options:{
@@ -19,30 +19,30 @@ export const store = new Vuex.Store({
       ]
     },
     listA:{
-      date1 : new Date(new Date().getFullYear(), new Date().getMonth(),  new Date().getDate()),
-      date2 : new Date(new Date().getFullYear(), new Date().getMonth()+3,  new Date().getDate()),
+      date1 : new Date(new Date().getFullYear(), new Date().getMonth(),  new Date().getDate()-3),
+      date2 : new Date(new Date().getFullYear(), new Date().getMonth(),  new Date().getDate()),
       radio:'cmp1',
       currentpage:1,
       toticount:0,
       countview:'50',
       keyfield:'casename',
       keyword:'',
-      sort:'0',
-      category:'0',
+      sort:'publishedAt',
+      category:'',
       baljucheocode:'00',
       amt1:'',
       amt2:''
     },
     listB:{
-      date1 : new Date(new Date().getFullYear(), new Date().getMonth(),  new Date().getDate()),
-      date2 : new Date(new Date().getFullYear(), new Date().getMonth()+3,  new Date().getDate()),
+      date1 : new Date(new Date().getFullYear(), new Date().getMonth(),  new Date().getDate()-3),
+      date2 : new Date(new Date().getFullYear(), new Date().getMonth(),  new Date().getDate()),
       radio:'cmp1',
       toticount:0,
       countview:'50',
       keyfield:'casename',
       keyword:'',
-      sort:'1',
-      category:'0',
+      sort:'publishedAt',
+      category:'',
       baljucheocode:'00',
       amt1:'',
       amt2:''

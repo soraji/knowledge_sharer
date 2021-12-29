@@ -1,5 +1,9 @@
+import axios from 'axios';
+import { _ } from 'core-js';
+import {EventBus} from '../eventBus.js'
 var moment = require('moment');
 moment().format();
+
 let methAll = {
   methods:{
     customFormatter(date) {   //datepicker 기본포맷
@@ -30,6 +34,16 @@ let methAll = {
   changePage(page){
     this.currentpage = page.currentPage;   
     window.scrollTo(0,0);
+  },
+  slackMsg(text){
+    const url = "https://hooks.slack.com/services/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";
+    var xhr = new XMLHttpRequest();
+      xhr.open("POST", url, true);
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      var payload = {
+          "text": text+" 에서 에러 발생",
+      };
+      xhr.send( JSON.stringify(payload));
   },
 }
 

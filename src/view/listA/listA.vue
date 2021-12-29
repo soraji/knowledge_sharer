@@ -4,14 +4,14 @@
     <table class="content_table">
       <tr>
         <td>
-          <table class="content_table_title " v-bind:style="{ fontSize: fontSize + 'pt' }">
+          <table class="content_table_title " v-bind:style="{ fontSize: fontSize + 'px' }">
             <tr>
               <th class="title num">No</th>
-              <th class="title name">title</th>
-              <th class="title author">author</th>
-              <th class="title source">source</th>
-              <th class="title date">date</th>
-              <th class="title url">url</th>
+              <th class="title name">제목</th>
+              <th class="title author">기자</th>
+              <th class="title source">출처</th>
+              <th class="title date">날짜</th>
+              <th class="title url">이동</th>
             </tr>       
           </table>
         </td>
@@ -50,10 +50,12 @@
               </table>
             </div>
             <div v-else class="list_div"> <!-- toticount가 0이 아니면 -->
-              <table v-for="(item,i) in listArray" class="main_list" :key="i" :ref="'konggoList'+i" v-bind:style="{ fontSize: fontSize + 'pt' }">
+              <table v-for="(item,i) in listArray" class="main_list" :key="i" :ref="'konggoList'+i" v-bind:style="{ fontSize: fontSize + 'px' }">
                 <tr v-bind:style="[ item.update_yn=='2' ? {color:'#808080'} : {color:'#000000'} ]">
                   <td class="num txt_center" ref="num" >{{((currentpage-1) * countview )+i+1}}</td>
-                  <td class="name">{{item.title}}</td>
+                  <td class="name">
+                    <router-link :to="'/detail'">{{item.title}}</router-link>  
+                  </td>
                   <td class="author">{{item.author}}</td>
                   <td class="source">{{item.source.name}}</td>
                   <td class="date txt_center">{{item.publishedAt.replace("T"," ").replace("Z","")}}</td>
@@ -85,8 +87,9 @@ import paginate from './pagination.vue';
 import style from '../../lib/style.css'
 import FadeLoader from 'vue-spinner/src/FadeLoader.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import variable from './listA.js'
 import methAll from '../../include/methAll.js'
+import variable from './listA.js'
+
 export default {
   mixins: [variable,methAll],
   components:{
@@ -113,11 +116,23 @@ export default {
       this.konggo_open =! this.konggo_open;
       localStorage.setItem('konggoOpen',this.konggo_open);
     },
+    slackMsg(text){
+    const url = "https://hooks.slack.com/services/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";
+    var xhr = new XMLHttpRequest();
+      xhr.open("POST", url, true);
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      var payload = {
+          "text": text+" 에서 에러 발생",
+      };
+      xhr.send( JSON.stringify(payload));
+    },
     async callingList(payload){
       this.loading = true;
       
       try{
-        const res = await axios.get("https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=7aff7bd09d1f41f69fd147911c552134&pageSize=50")
+        let url = `https://newsapi.org/v2/everything?q=bitcoin&category=${this.category}&from=${this.date1.toISOString()}&to=${this.date2.toISOString()}&page=${this.currentpage}&pageSize=${this.countview}&sortBy=${this.sort}&apiKey=7aff7bd09d1f41f69fd147911c552134`;
+        console.log(url)
+        const res = await axios.get(url)
         this.listArray = res.data.articles;
         this.toticount = res.data.totalResults;
         //publishedAt iso8601 형식

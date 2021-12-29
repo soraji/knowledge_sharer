@@ -50,9 +50,9 @@
         <td>
           <select name="sort" id="sort" v-model="sort" class="selectDropDown" @change="sortchange($event)" style="width:85px;">
             <option>정렬기준</option>
-            <option value="0">날짜순↑</option>
-            <option value="1">인기순↑</option>
-            <option value="2">관련성↑</option>
+            <option value="publishedAt">날짜순↑</option>
+            <option value="popularity">인기순↑</option>
+            <option value="relevancy">관련성↑</option>
           </select>
         </td>
       </tr>
@@ -69,7 +69,21 @@ import variable from './listA.js'
 import methAll from '../../include/methAll.js'
 export default {
   mixins: [variable,methAll],
-  components:{inputKorean}
+  components:{inputKorean},
+  methods:{
+    countviewChange(event){
+      this.countview = event.srcElement.value;
+      this.$emit('search2Go', {
+        "sort" : this.sort, "countview": this.countview 
+      });
+    },
+    sortchange(event){
+      this.sort = event.srcElement.value;
+      this.$emit('search2Go', {
+        "sort" : this.sort, "countview": this.countview 
+      });
+    }
+  }
 }
 </script>
 

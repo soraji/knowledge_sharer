@@ -12,5 +12,5 @@ export default {
 
 <style>
 .main-content{ flex: 1; } 
-footer{ background-color:#26272b;padding:20px 0 20px;font-size:15px;line-height:24px;color:#737373;text-align: center;margin-top:50px }
+footer{ background-color:#26272b;padding:20px 0 20px;font-size:15px;height:25px;line-height:24px;color:#737373;text-align: center;position: absolute; bottom:0;width:100%;z-index: -1 }
 </style>

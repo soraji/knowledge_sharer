@@ -32,7 +32,7 @@ var variable = {
       tri : -1,tdname : '', 
       customLabels, 
       loading:false, leftShowing:true, date:[],
-      color:'#008844', 
+      color:'#5cbfd1', 
       fontSize: this.$store.state.fontSize,
       faQuestionCircle, faPencilAlt, faChevronDown, faChevronUp ,faAngleDoubleDown,faAngleDoubleUp,faPrint,faChartBar,faFileExcel,faTrashAlt,faPlus,faMinus,faFileDownload,faShare,
       radio : 'cmp1', 
@@ -75,14 +75,6 @@ var variable = {
           this.$store.state.listA.countview = val;
       }
     },
-    keyfield:{
-      get(){
-          return this.$store.state.listA.keyfield
-      },
-      set(val){
-          this.$store.state.listA.keyfield = val;
-      }
-    },
     keyword:{
       get(){
           return this.$store.state.listA.keyword
@@ -91,12 +83,12 @@ var variable = {
           this.$store.state.listA.keyword = val;
       }
     },
-    jiyukcode:{
+    category:{
       get(){
-          return this.$store.state.listA.jiyukcode
+          return this.$store.state.listA.category
       },
       set(val){
-          this.$store.state.listA.jiyukcode = val;
+          this.$store.state.listA.category = val;
       }
     },
     date1:{

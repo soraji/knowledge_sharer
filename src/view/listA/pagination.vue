@@ -201,7 +201,7 @@
   padding: 6px 12px;
   margin-left: -1px;
   line-height: 1.42857143;
-  color: #338a2e;
+  color: #5cbfd1;
   text-decoration: none;
   background-color: #ffffff;
   border: 1px solid #dddddd;
@@ -235,8 +235,8 @@
   z-index: 3;
   color: #ffffff;
   cursor: default;
-  background-color: #338a2e;
-  border-color: #338a2e;
+  background-color: #5cbfd1;
+  border-color: #5cbfd1;
 }
 .pagination > .disabled > span,
 .pagination > .disabled > span:hover,

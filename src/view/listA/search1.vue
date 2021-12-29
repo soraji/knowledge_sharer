@@ -10,16 +10,16 @@
               <table class="search1_right_inner_table">
                 <tr>
                   <td width="140">
-                    <select class="selectpicker selectDropDown category show-tick" name="category" id="category" v-model="category" @change="sjiyuk($event);">
-                      <option value="0">전체</option>
+                    <select class="selectpicker selectDropDown category show-tick" name="category" id="category" v-model="category">
+                      <option value="">전체</option>
                       <option data-divider="true"></option>
-                      <option value="1">비즈니스</option>
-                      <option value="2">엔터테인먼트</option>
-                      <option value="3">일반</option>
-                      <option value="4">건강</option>
-                      <option value="5">과학</option>
-                      <option value="6">운동</option>
-                      <option value="7">기술</option>
+                      <option value="business">비즈니스</option>
+                      <option value="entertainment">엔터테인먼트</option>
+                      <option value="general">일반</option>
+                      <option value="health">건강</option>
+                      <option value="science">과학</option>
+                      <option value="sports">운동</option>
+                      <option value="technology">기술</option>
                     </select>
                   </td>
                   <td width="10" style="text-align:center;padding:0px 25px 0px 5px;"><font-awesome-icon :icon="faSearch" size="lg" style="color:#a2a2a5;" @click="$modal.show('jiyuk_modal')" /></td>
@@ -80,6 +80,14 @@ export default {
   mixins: [variable,methAll],
   components:{
     Datepicker,FontAwesomeIcon,jiyuk_modal
+  },
+  methods:{
+    checkform(){
+      let payload = {
+        "category" : this.category, "date1": this.date1, "date2" : this.date2
+      }
+      this.$emit("s1ToList",payload);
+    }
   }
 }
 </script>

@@ -35,13 +35,14 @@
       <div class="closeBtn" @click="closeBtn()"><font-awesome-icon :icon="faTimes" style="color:#f8884d;" size="3x"/></div>
     </div>
     <Header v-on:destroy="destroy"></Header>
-    <div class="wrapper">
+    <div class="page-container">
       <keep-alive>
         <router-view ref="routerview" :key="$route.fullPath"></router-view>
       </keep-alive>
+      <Footer></Footer>
     </div>
     
-    <Footer></Footer>
+    
   </div>
 </template>
 
@@ -139,6 +140,7 @@ svg{
     transform: translateY(0);
   }
 }
+.page-container{position: relative;min-height:100%;padding-bottom: 100px;}
 .roundBtn{
   font-size: 9pt;
   padding-bottom:2px;

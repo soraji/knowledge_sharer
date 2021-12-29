@@ -4,7 +4,7 @@
       <router-link to="/"><img src="../assets/logo.png" alt="대표로고" style="width:188px; float:left;"></router-link>
     </div>
     
-    <div class="wrapper">
+    <div class="header_wrapper">
       <div class="nav_ch" >
         <nav>
           <div class="nav_box">
@@ -51,7 +51,7 @@ nav{
 	border-radius:2px;
   width:100%;
 }
-.wrapper{
+.header_wrapper{
   width:100%;
   background-color: #0093E9;
   background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);

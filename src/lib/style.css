@@ -62,3 +62,5 @@ button:hover.tooltips span {  display: block;opacity: 0.8;bottom: -7px;left: 70%
 
 .floating{position: fixed; right: 0; bottom: 5%;width:50px; z-index: 10;}
 .floating button{border-radius: 50%;border:none;background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(97,186,255,1) 0%, rgba(166,239,253,1) 90.1% );color:#ffffff;text-align: center;width: 30px;height:30px;outline-style: none;margin-bottom:6px;font-size: 12px !important;}
+
+a{text-decoration: none;color:#316be6}
