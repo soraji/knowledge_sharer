@@ -24,20 +24,15 @@ const customLabels = {
 var variable = { 
   data: function () { 
     return { 
-      disabledDates: {
-        to: new Date( new Date().getFullYear()-5,new Date().getMonth(),new Date().getDate() ),  //이 날짜까지는 선택할 수 없다. (년도, 월+1, 일)
-        from : new Date( new Date().getFullYear()+1, new Date().getMonth() , new Date().getDate() ) //이 날짜 이후로는 선택할 수 없다(년도, 월+1, 일)
-      },
       ko:ko,
-      tri : -1,tdname : '', 
       customLabels, 
-      loading:false, leftShowing:true, date:[],
+      loading:false, isShowing:true, date:[],
       color:'#5cbfd1', 
       fontSize: this.$store.state.fontSize,
       faQuestionCircle, faPencilAlt, faChevronDown, faChevronUp ,faAngleDoubleDown,faAngleDoubleUp,faPrint,faChartBar,faFileExcel,faTrashAlt,faPlus,faMinus,faFileDownload,faShare,
       radio : 'cmp1', 
       faSearch,faCog,
-      svcselect:'1',  window:0, multijiyuks:[],
+      svcselect:'1',  window:0, multicates:[],
       cmpChoose:'cmp1',
       listArray:[]
     } 
@@ -107,30 +102,14 @@ var variable = {
           this.$store.state.listA.date2 = val;
       }
     },
-    baljucheocode:{
+    categories:{
       get(){
-          return this.$store.state.listA.baljucheocode
+          return this.$store.state.listA.categories
       },
       set(val){
-          this.$store.state.listA.baljucheocode = val;
+          this.$store.state.listA.categories = val;
       }
-    },
-    amt1:{
-      get(){
-          return this.$store.state.listA.amt1
-      },
-      set(val){
-          this.$store.state.listA.amt1 = val;
-      }
-    },
-    amt2:{
-      get(){
-          return this.$store.state.listA.amt2
-      },
-      set(val){
-          this.$store.state.listA.amt2 = val;
-      }
-    },
+    }
   }
 }
 export default variable;

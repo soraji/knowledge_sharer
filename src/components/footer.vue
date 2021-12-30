@@ -1,6 +1,6 @@
 <template>
-  <footer class="site-footer">
-    <div>Copyright &copy; 2021 All Rights Reserved by soraji</div>
+  <footer class="site-footer" id="scrollBottom">
+    <div>Copyright &copy; 2022 All Rights Reserved by soraji</div>
   </footer>
 </template>
 

@@ -99,50 +99,30 @@ export default {
   },
   created(){
     this.callingList();
-    EventBus.$on("EVfont_change", fontSize => {this.fontSize = fontSize;});
-    if(localStorage.getItem('konggoOpen') == 'undefined') this.konggo_open = false
-    else this.konggo_open = JSON.parse(localStorage.getItem('konggoOpen'));
+    EventBus.$on("EB_fontChange", payload => {
+      this.fontSize = payload.fontSize;
+    })
   },
   watch: { 
-    currentpage: function(newVal) { //현재페이지가 변동이 있으면 즉시 업데이트 된다.
-      this.currentpage = newVal;
+    currentpage: function(val) { //현재페이지가 변동이 있으면 즉시 업데이트 된다.
+      this.currentpage = val;
       this.callingList({
         
       });
     },
   },
   methods:{
-    konggoOpen(){
-      this.konggo_open =! this.konggo_open;
-      localStorage.setItem('konggoOpen',this.konggo_open);
-    },
-    slackMsg(text){
-    const url = "https://hooks.slack.com/services/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";
-    var xhr = new XMLHttpRequest();
-      xhr.open("POST", url, true);
-      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-      var payload = {
-          "text": text+" 에서 에러 발생",
-      };
-      xhr.send( JSON.stringify(payload));
-    },
     async callingList(payload){
       this.loading = true;
       
       try{
-        let url = `https://newsapi.org/v2/everything?q=bitcoin&category=${this.category}&from=${this.date1.toISOString()}&to=${this.date2.toISOString()}&page=${this.currentpage}&pageSize=${this.countview}&sortBy=${this.sort}&apiKey=7aff7bd09d1f41f69fd147911c552134`;
+
+        let url = `https://newsapi.org/v2/everything?q=${this.categories == '' ? this.category : this.categories}&from=${this.date1.toISOString()}&to=${this.date2.toISOString()}&page=${this.currentpage}&pageSize=${this.countview}&sortBy=${this.sort}&apiKey=7aff7bd09d1f41f69fd147911c552134&language=en`;
         console.log(url)
         const res = await axios.get(url)
         this.listArray = res.data.articles;
         this.toticount = res.data.totalResults;
         //publishedAt iso8601 형식
-        
-        for(let i=0; i<this.listArray.length; i++){
-          let date = this.listArray[i].publishedAt;
-          date = new Date(date);
-          this.getFormatDate(date);
-          this.date.push(date);
-        }
       }catch(e){
         this.slackMsg('');
       }finally{
@@ -151,10 +131,6 @@ export default {
     },
     move(url){
       window.open(url);
-    },
-    changePage(page){
-      this.currentpage = page.currentPage;   
-      window.scrollTo(0,0);
     },
   }
 }
@@ -187,10 +163,10 @@ export default {
 
 .title{text-align: center !important; color:#000000 !important; cursor:default !important;}
 .num{width: 2%;}
-.name{width:25%}
+.name{width:23%}
 .author{width:5%}
-.source{width:4%}
-.date{width:4%}
+.source{width:5%}
+.date{width:5%}
 .url{width:2%}
 
 /* 관리td */

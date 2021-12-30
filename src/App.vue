@@ -104,7 +104,7 @@ export default {
   margin:0 auto;
   padding:0;
   width:100%;
-  font-family:'dotum','돋움','Apple SD Gothic Neo';
+  font-family:Noto Sans KR, sans-serif,'Apple SD Gothic Neo';
   font-size: 9pt;
   min-width:1200px;
   height:100%;
@@ -115,7 +115,7 @@ html,body{
   padding:0;
   font-size: 9pt;
   overflow-x: hidden;
-  font-family:'dotum','돋움','Apple SD Gothic Neo';
+  font-family:Noto Sans KR, sans-serif,'Apple SD Gothic Neo';
 }
 svg{
   cursor: pointer;

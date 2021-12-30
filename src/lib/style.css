@@ -28,7 +28,20 @@ input[id="keyword"]{width:100%;ime-mode:active;height:22px;border: 1px solid #be
 .sm_ver_dvline{text-align:center; width: 42px; color:#e5e5e5;}
 
 .search2_main_table{margin: 15px auto 8px auto;table-layout: fixed; width:98%; text-align:left; border-top:1px solid #e5e5e5;border-bottom:1px solid #e5e5e5;}
+
+.popup{display: none;}
+#font_btn{border:none;background-color:#ffffff;margin-right:10px}
+.font_resize_box{width:150px;border:1px solid #9da1aa;position: absolute;display: flex;right:9%;background-color: #ffffff;height:25px;z-index:15;padding:10px;margin-top:10px}
+.font_resize_box div{border-radius: 50%;border:1px solid #dae1e6;width:25px;height:25px;text-align: center;line-height: 26px;margin:0 5px;cursor: pointer;float:left}
+.font_resize_box span{margin-top:7px;margin-right:10px;float:left;font-size:13px;}
+.font_resize_box div:nth-child(2){font-size:13px}
+.font_resize_box div:nth-child(3){font-size:13px}
+.font_resize_box div:nth-child(4){font-size:14px}
+.font_resize_box div:nth-child(5){font-size:15px}
+.font_resize_box div:nth-child(6){font-size:16px}
 /* //search2 style */
+
+
 
 select::-ms-expand { display:none; }
 /* 커스터마이징 라디오버튼 */
@@ -64,3 +77,13 @@ button:hover.tooltips span {  display: block;opacity: 0.8;bottom: -7px;left: 70%
 .floating button{border-radius: 50%;border:none;background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(97,186,255,1) 0%, rgba(166,239,253,1) 90.1% );color:#ffffff;text-align: center;width: 30px;height:30px;outline-style: none;margin-bottom:6px;font-size: 12px !important;}
 
 a{text-decoration: none;color:#316be6}
+.sticky{position:sticky;top:0;z-index: 10;}
+
+/* 설명이 긴 위로뜨는 툴팁 */
+.tooltips_up_exp {position: relative;display: inline;}
+/* tooltip이 보이지 않을때 숨어있는곳 */
+.tooltips_up_exp span {position: absolute;color: #FFFFFF;background: #000000;height: 26px;line-height: 26px;text-align: center;display: none;border-radius: 6px;top:-34px;left:0;padding:0 7px;font-size:13px}
+/* tooltip의 화살표 */
+.tooltips_up_exp span:after {/*content: '';position: absolute;top: 103%;left: 0%;margin-left: -10px;margin-top: -5px;width: 0;height: 0;border-top: 8px solid #000000;border-right: 8px solid transparent;border-left: 8px solid transparent; -webkit-transform: rotate(90deg); */}
+/* hover시 뜨는 말풍선 */
+:hover.tooltips_up_exp span {  display: block;opacity: 0.8;left: -20%;margin-left:0px;z-index: 999;}

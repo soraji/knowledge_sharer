@@ -10,7 +10,7 @@
 
         <td class="sm_ver_dvline">|</td>
         <td>
-          <toggle-button v-model="leftShowing" @change="fold(leftShowing)"  :labels="{checked: '검색조건 ON', unchecked: '검색조건 OFF'}" :fontSize="12" :width="120" :color="{checked: '#5cbfd1'}" :margin="2" :height="26"></toggle-button>
+          <toggle-button v-model="isShowing" @change="fold(isShowing)"  :labels="{checked: '검색조건 ON', unchecked: '검색조건 OFF'}" :fontSize="12" :width="120" :color="{checked: '#5cbfd1'}" :margin="2" :height="26"></toggle-button>
         </td>
       </tr>
     </table>
@@ -44,8 +44,16 @@
           </div>
         </td>
         <td >
-          <button type="button" class="btnClassFont" @click="biggerFont()">가 +</button>
-          <button type="button" class="btnClassFont" @click="smallerFont()" style="margin-right:21px;">가 -</button>
+          <button type="button" class="link tooltips_up_exp" id="font_btn" href="#">
+            <img src="../../assets/font.svg" class="txt_pointer" style="width:14.5px;height:14.5px;">
+            <div><span style="width:60px">확대/축소</span></div>
+          </button>
+          <div class="popup font_resize_box" tabindex="-1" style="display:none">
+            <span>크기</span>
+            <div :style="[ this.$store.state.fontSize == '12' ? {'backgroundColor' : '#e7f2df'} : {}]" @click="fontChange('12')">가</div>
+            <div :style="[ this.$store.state.fontSize == '13' ? {'backgroundColor' : '#e7f2df'} : {}]" @click="fontChange('13')">가</div>
+            <div :style="[ this.$store.state.fontSize == '14' ? {'backgroundColor' : '#e7f2df'} : {}]" @click="fontChange('14')">가</div>
+          </div>
         </td>
         <td>
           <select name="sort" id="sort" v-model="sort" class="selectDropDown" @change="sortchange($event)" style="width:85px;">
@@ -70,18 +78,38 @@ import methAll from '../../include/methAll.js'
 export default {
   mixins: [variable,methAll],
   components:{inputKorean},
+  mounted(){
+    $(".link").click(function(e){
+      e.preventDefault();
+      $(".popup").fadeIn(100,function(){$(this).focus();});
+    });
+    $('.close').click(function() {
+      $(".popup").fadeOut(100);
+    });
+    $(".popup").on('blur',function(){
+        $(this).fadeOut(100);
+    });
+  },
   methods:{
     countviewChange(event){
       this.countview = event.srcElement.value;
       this.$emit('search2Go', {
-        "sort" : this.sort, "countview": this.countview 
+        "keyword":this.keyword, "sort" : this.sort, "countview": this.countview 
       });
     },
     sortchange(event){
       this.sort = event.srcElement.value;
       this.$emit('search2Go', {
-        "sort" : this.sort, "countview": this.countview 
+        "keyword":this.keyword, "sort" : this.sort, "countview": this.countview 
       });
+    },
+    fold(boolean){
+      if(boolean == false) EventBus.$emit("EB_isShowing",boolean);
+      else EventBus.$emit("EB_isShowing",boolean);
+    },
+    fontChange(fontSize){
+      this.$store.state.fontSize = fontSize;
+      EventBus.$emit("EB_fontChange",{fontSize});
     }
   }
 }

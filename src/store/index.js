@@ -19,7 +19,7 @@ export const store = new Vuex.Store({
       ]
     },
     listA:{
-      date1 : new Date(new Date().getFullYear(), new Date().getMonth(),  new Date().getDate()-3),
+      date1 : new Date(new Date().getFullYear(), new Date().getMonth(),  new Date().getDate()-1),
       date2 : new Date(new Date().getFullYear(), new Date().getMonth(),  new Date().getDate()),
       radio:'cmp1',
       currentpage:1,
@@ -28,25 +28,12 @@ export const store = new Vuex.Store({
       keyfield:'casename',
       keyword:'',
       sort:'publishedAt',
-      category:'',
+      category:'bitcoin',
+      categories:'',
       baljucheocode:'00',
       amt1:'',
       amt2:''
     },
-    listB:{
-      date1 : new Date(new Date().getFullYear(), new Date().getMonth(),  new Date().getDate()-3),
-      date2 : new Date(new Date().getFullYear(), new Date().getMonth(),  new Date().getDate()),
-      radio:'cmp1',
-      toticount:0,
-      countview:'50',
-      keyfield:'casename',
-      keyword:'',
-      sort:'publishedAt',
-      category:'',
-      baljucheocode:'00',
-      amt1:'',
-      amt2:''
-    }
   }
 })
 
