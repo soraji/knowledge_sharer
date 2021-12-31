@@ -19,23 +19,29 @@ export const router = new VueRouter({
     },
     {
       path:'/main',
+      name:'/main',
       component:mainList
     },
     {
       path:'/list1',
+      name:'/list1',
       component:sampleList1
     },
     {
       path:'/list2',
+      name:'/list2',
       component:sampleList2
     },
     {
       path:'/list3',
+      name:'/list3',
       component:sampleList3
     },
     {
       path:'/detail',
-      component:detail
+      name:'/detail',
+      component:detail,
+      props:true
     },
   ]
 });

@@ -54,7 +54,7 @@
                 <tr v-bind:style="[ item.update_yn=='2' ? {color:'#808080'} : {color:'#000000'} ]">
                   <td class="num txt_center" ref="num" >{{((currentpage-1) * countview )+i+1}}</td>
                   <td class="name">
-                    <router-link :to="'/detail'">{{item.title}}</router-link>  
+                    <div class="txt_pointer txt_blue" @click="detailGo(item)">{{item.title}}</div>  
                   </td>
                   <td class="author">{{item.author}}</td>
                   <td class="source">{{item.source.name}}</td>
@@ -112,6 +112,9 @@ export default {
     },
   },
   methods:{
+    detailGo(payload){
+      this.$router.push({name:'/detail',params  :{ param : payload }});
+    },
     async callingList(payload){
       this.loading = true;
       
