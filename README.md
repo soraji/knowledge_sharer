@@ -1,11 +1,12 @@
 ## 지식공유자가 되고 싶어 만든 뷰 프로젝트
 
 
-vue.js를 이용해 실무에서 사용하는 프로젝트를 만들어보도록 합니다 ( ´ ▽ ` )ﾉ
+#### vue.js를 이용해 실무에서 사용하는 프로젝트를 만들어보도록 합니다 ( ´ ▽ ` )ﾉ
 ---
-완성본 => https://soraji.github.io/knowledge_sharer_result/
-(main페이지의 목록은 localhost로만 제공해주는 API를 이용해서 request되지 않습니다! 
-test를 위해서 git clone혹은 zip다운 후 localhost로 띄워주세요)
+
+##### 완성본 => https://soraji.github.io/knowledge_sharer_result/
+##### <br>(main페이지의 목록은 localhost로만 제공해주는 API를 이용해서 request되지 않습니다! 
+##### <br>test를 위해서는 git clone혹은 zip다운 후 localhost로 띄워주세요)
 ---
 
 이 프로젝트에서는 아래의 개념을 사용했습니다 ๑•‿•๑
