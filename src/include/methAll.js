@@ -31,16 +31,16 @@ let methAll = {
       this.currentpage = page.currentPage;   
       window.scrollTo(0,0);
     },
-    slackMsg(text){
-      const url = "https://hooks.slack.com/services/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";
-      var xhr = new XMLHttpRequest();
-        xhr.open("POST", url, true);
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        var payload = {
-            "text": text+" 에서 에러 발생",
-        };
-        xhr.send( JSON.stringify(payload));
-    },
+    // slackMsg(text){
+    //   const url = "https://hooks.slack.com/services/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";
+    //   var xhr = new XMLHttpRequest();
+    //     xhr.open("POST", url, true);
+    //     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    //     var payload = {
+    //         "text": text+" 에서 에러 발생",
+    //     };
+    //     xhr.send( JSON.stringify(payload));
+    // },
   },
 }
 

@@ -27,7 +27,7 @@ export default {
 
 <style scoped>
 .content{width:95%;margin:0 auto;}
-.inner_content{width:98%;margin:0 auto;border:1px solid #dae1e6; padding:10px;line-height: 26px;font-size:13px}
+.inner_content{width:100%;margin:0 auto;border:1px solid #dae1e6; padding:10px;line-height: 26px;font-size:13px}
 .inner_content img{width:50%;margin:20px 0;}
 .btn{height: 30px;border-radius: 0;line-height: 26px;padding: 0 7px;background: rgb(254,254,254);background: linear-gradient(180deg, rgba(254,254,254,1) 0%, rgba(240,242,245,1) 100%);border: 1px solid #bebfc4;color: #545454;font-size: 13px;border-radius: 3px;cursor: pointer;margin-bottom:10px}
 </style>
