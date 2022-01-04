@@ -257,7 +257,7 @@
  select{
    /* width수정했음 */
    width:100%;  
-   border:1px solid #cccccc;background-color:#ffffff;
+   border:1px solid #e1e1e1;background-color:#ffffff;
    line-height: 24px;
   }
  select[multiple],select[size]{height:auto;}

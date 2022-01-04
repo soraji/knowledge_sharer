@@ -39,6 +39,17 @@
     </div>
     <div v-else style="margin-top:1px;width:98%;margin:0 auto;">
       <table class="result_detail_table sticky">
+        <colgroup>
+          <col style="width:10%">
+          <col style="width:8%">
+          <col style="width:8%">
+          <col style="width:10%">
+          <col style="width:8%">
+          <col style="width:10%">
+          <col style="width:15%">
+          <col style="width:15%">
+          <col style="width:10%">
+        </colgroup>
         <tr>
           <th class="gugan">구간</th>
           <th class="jijum">지점</th>
@@ -56,6 +67,17 @@
           <td style="padding:0">
             <!-- 반응형rowspan넣으려면 tr에 v-for넣어야함 -->
             <table class="main_list">
+              <colgroup>
+                <col style="width:10%">
+                <col style="width:8%">
+                <col style="width:8%">
+                <col style="width:10%">
+                <col style="width:8%">
+                <col style="width:10%">
+                <col style="width:15%">
+                <col style="width:15%">
+                <col style="width:10%">
+              </colgroup>
               <tr v-for="(item,i) in newArray" :key="item.var5"  ref="open">
 
                 <td class="gugan" v-if="item.bigRowSpan > 0"  :rowspan="item.bigRowSpan">
@@ -463,7 +485,7 @@ input[name="keyword"]{width:150px;height:22px;border: 1px solid #cccccc;border-r
 .result_detail_table tr th{border:1px solid #a5a5a5;background-color: #f7f7f8;height:25px;text-align: center;font-weight: normal;padding:0 5px}
 .menu{padding:22px 0 10px 10px;font-size:14px;}
 
-.main_list{width: 100%;margin:0px auto 2px auto;border-collapse: collapse;table-layout: fixed;}
+.main_list{width: 100%;margin:0px auto 2px auto;border-collapse: collapse;}
 .main_list td{padding: 5px !important; border:1px solid #e5e5e5;}
 
 .tableclassnon tr td{border:   #CCCCCA 0px solid; }
@@ -490,7 +512,7 @@ input[type=radio]:disabled + label span{cursor:not-allowed;}
 .gugan .tableclassnon tr td:nth-child(1){width:35px}
 .gugan .tableclassnon tr td:nth-child(2){padding:0 !important}
 
-.gugan{width:10%;}
+/* .gugan{width:10%;}
 .jijum{width:8%}
 .chamga{width:8%;}
 .fruits{width:10%;}
@@ -498,7 +520,7 @@ input[type=radio]:disabled + label span{cursor:not-allowed;}
 .name{width:10%;}
 .jiyuk{width:15%;}
 .number{width:15%;}
-.rank{width:10%;}
+.rank{width:10%;} */
 
 .search_btn{position: relative;left:-8%;}
 select{border: none ;position: relative;display: block;z-index: 2;width:80px;height: 19px !important;top: 16px;left: 10px;border-radius: 25px;}

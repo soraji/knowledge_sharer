@@ -26,23 +26,7 @@
             <option value="100">100</option>
           </select>
         </td>
-        <td class="inner">
-          <div style="margin:0 auto;">
-            <table class="search2_inner_table">
-              <tr>
-                <td>
-                  <input type="radio" name="cmp1" id="cmp1" ref="cmp1" value="cmp1" v-model="cmpChoose" @click="checkradio('cmp1')" >
-                  <label for="cmp1"><span v-bind:style="[ radio === 'cmp1' ? {color:'#ff0000'} : {color:'#000000'} ]" @click="checkradio('cmp1')">cmp1</span></label>
-                </td>
-                <td>
-                  <input type="radio" name="cmp2" id="cmp2" ref="cmp2" value="cmp2" v-model="cmpChoose" @click="checkradio('cmp2')" >
-                  <label for="cmp2"><span v-bind:style="[ radio === 'cmp2' ? {color:'#ff0000'} : {color:'#000000'} ]" @click="checkradio('cmp2')">cmp2</span></label>
-                </td>
-                <td v-if="window>1200"></td>
-              </tr>
-            </table>
-          </div>
-        </td>
+        <td></td>
         <td >
           <button type="button" class="link tooltips_up_exp" id="font_btn" href="#">
             <img src="../../assets/font.svg" class="txt_pointer" style="width:14.5px;height:14.5px;">

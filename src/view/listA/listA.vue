@@ -12,6 +12,7 @@
               <th class="title source">출처</th>
               <th class="title date">날짜</th>
               <th class="title url">이동</th>
+              <th class="title trash">삭제</th>
             </tr>       
           </table>
         </td>
@@ -50,8 +51,8 @@
               </table>
             </div>
             <div v-else class="list_div"> <!-- toticount가 0이 아니면 -->
-              <table v-for="(item,i) in listArray" class="main_list" :key="i" :ref="'konggoList'+i" v-bind:style="{ fontSize: fontSize + 'px' }">
-                <tr v-bind:style="[ item.update_yn=='2' ? {color:'#808080'} : {color:'#000000'} ]">
+              <table v-for="(item,i) in listArray" class="main_list" :key="i" :ref="'newsList'+i" v-bind:style="{ fontSize: fontSize + 'px' }">
+                <tr>
                   <td class="num txt_center" ref="num" >{{((currentpage-1) * countview )+i+1}}</td>
                   <td class="name">
                     <div class="txt_pointer txt_blue" @click="detailGo(item)">{{item.title}}</div>  
@@ -61,6 +62,9 @@
                   <td class="date txt_center">{{item.publishedAt.replace("T"," ").replace("Z","")}}</td>
                   <td class="url txt_center">
                     <font-awesome-icon :icon="faShare" size="lg" style="color:#9b9b9b" @click="move(item.url)"/>
+                  </td>
+                  <td class="trash txt_center">
+                    <font-awesome-icon :icon="faTrashAlt" size="lg" style="color:#9b9b9b" @click="gotrash(i)"/>
                   </td>
                 </tr>
               </table>
@@ -115,13 +119,24 @@ export default {
     detailGo(payload){
       this.$router.push({name:'/detail',params  :{ param : payload }});
     },
+    gotrash(index){
+      // axios.post('삭제할 수 있는 backend api 주소');
+      this.toticount = this.toticount - 1;
+      this.$delete(this.listArray,index);
+    },
     async callingList(payload){
       this.loading = true;
       
       try{
 
-        let url = `https://newsapi.org/v2/everything?q=${this.categories == '' ? this.category : this.categories}&from=${this.date1.toISOString()}&to=${this.date2.toISOString()}&page=${this.currentpage}&pageSize=${this.countview}&sortBy=${this.sort}&apiKey=7aff7bd09d1f41f69fd147911c552134&language=en`;
-        console.log(url)
+        let url = '';
+        
+        if(window.location.href.startsWith("http://localhost")){
+          url = `https://newsapi.org/v2/everything?q=${this.categories == '' ? this.category : this.categories}&from=${this.date1.toISOString()}&to=${this.date2.toISOString()}&page=${this.currentpage}&pageSize=${this.countview}&sortBy=${this.sort}&apiKey=7aff7bd09d1f41f69fd147911c552134&language=en`;
+        }else{
+          url = 'https://soraji.github.io/dummyAPI/news.json';
+        }
+
         const res = await axios.get(url)
         this.listArray = res.data.articles;
         this.toticount = res.data.totalResults;
@@ -171,6 +186,7 @@ export default {
 .source{width:5%}
 .date{width:5%}
 .url{width:2%}
+.trash{width:2%}
 
 /* 관리td */
 .subject1_td{width:85%;float:left;}
