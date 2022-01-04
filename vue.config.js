@@ -7,6 +7,5 @@ module.exports = {
   configureWebpack: {
     entry: ["babel-polyfill", "./src/main.js"]
   },
-  outputDir:'./docs',
-  publicPath: './knowledge_sharer/'
+  outputDir:'./docs'
 }
