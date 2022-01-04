@@ -6,5 +6,7 @@ module.exports = {
   transpileDependencies: [ansiRegex],
   configureWebpack: {
     entry: ["babel-polyfill", "./src/main.js"]
-  }
+  },
+  outputDir:'./docs',
+  publicPath: './knowledge_sharer/'
 }
