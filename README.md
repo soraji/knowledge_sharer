@@ -4,7 +4,7 @@
 #### vue.js를 이용해 실무에서 사용하는 프로젝트를 만들어보도록 합니다 ( ´ ▽ ` )ﾉ
 ---
 
-##### 완성본 => https://soraji.github.io/knowledge_sharer_result/
+##### 완성본 => https://soraji.github.io/knowledge_sharer/index.html
 ##### <br>(main페이지의 목록은 localhost로만 제공해주는 API를 이용해서 request되지 않습니다! 
 ##### <br>test를 위해서는 git clone혹은 zip다운 후 localhost로 띄워주세요)
 ---
