@@ -5,8 +5,8 @@
 ---
 
 ##### 완성본 => https://soraji.github.io/knowledge_sharer/index.html
-##### <br>(main페이지의 목록은 localhost로만 제공해주는 API를 이용해서 request되지 않습니다! 
-##### <br>test를 위해서는 git clone혹은 zip다운 후 localhost로 띄워주세요)
+##### <br>(main페이지의 목록은 localhost로만 제공해주는 API를 이용해서 dummy API를 이용하였습니다! 
+##### <br>테스트와 실시간 정보를 위해서는 git clone혹은 zip다운 후 localhost로 띄워주세요)
 ---
 
 이 프로젝트에서는 아래의 개념을 사용했습니다 ๑•‿•๑
