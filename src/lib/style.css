@@ -14,6 +14,7 @@
 .txt_fix{table-layout:fixed;}
 .txt_bold{font-weight: bold;}
 .bd_collapse{border-collapse: collapse;}
+svg{cursor:pointer}
 /* //꾸밈 */
 
 select{height: 30px;border-radius: 0;line-height: 23px;background: #ffffff;border: 1px solid #bebfc4;color: #545454;font-size: 12px;border-radius: 3px;margin-left:3px;margin-bottom:-3px;}

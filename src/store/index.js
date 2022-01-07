@@ -5,8 +5,8 @@ export const store = new Vuex.Store({
   state:{
     loading:true,
     fontSize: 12,
-    thisMonth : new Date().getMonth()+1, //10
-    thisDate : new Date().getDate(),    //16
+    thisMonth : new Date().getMonth()+1, 
+    thisDate : new Date().getDate(),    
     options:{
       animals:[
         { value : "11", text : "강아지"},
@@ -21,18 +21,13 @@ export const store = new Vuex.Store({
     listA:{
       date1 : new Date(new Date().getFullYear(), new Date().getMonth(),  new Date().getDate()-1),
       date2 : new Date(new Date().getFullYear(), new Date().getMonth(),  new Date().getDate()),
-      radio:'cmp1',
       currentpage:1,
       toticount:0,
       countview:'50',
-      keyfield:'casename',
       keyword:'',
       sort:'publishedAt',
       category:'bitcoin',
       categories:'',
-      baljucheocode:'00',
-      amt1:'',
-      amt2:''
     },
   }
 })

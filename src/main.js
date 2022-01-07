@@ -1,7 +1,6 @@
 import "core-js/stable";
 import Vue from 'vue'
 import App from './App.vue'
-import * as Tabs from 'vue-slim-tabs'
 import VueRouter from 'vue-router'
 import { router } from './routes/routes.js';
 import {store} from './store/index.js'; 
@@ -20,7 +19,6 @@ import Affix from 'vue-affix';
 Vue.use(Affix);
 Vue.use(VModal,{ dialog: true });
 Vue.use(ToggleButton);
-Vue.use(Tabs);
 library.add(fas);
 library.add(far);
 Vue.config.productionTip = false;

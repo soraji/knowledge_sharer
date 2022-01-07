@@ -14,8 +14,8 @@ export const router = new VueRouter({
   mode : 'history',
   routes : [
     {
-      path:'/knowledge_sharer/',
-      redirect : '/main',
+      path:'/',
+      component:mainList
     },
     {
       path:'/main',

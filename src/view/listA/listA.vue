@@ -109,7 +109,7 @@ export default {
   },
   watch: { 
     currentpage: function(val) { //현재페이지가 변동이 있으면 즉시 업데이트 된다.
-      this.currentpage = val;
+      this.currentpage = parseInt(val);
       this.callingList({
         
       });

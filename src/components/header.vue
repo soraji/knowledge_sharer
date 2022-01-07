@@ -1,7 +1,7 @@
 <template>
   <div class="header" id="scrollTop">
     <div class="toplogo" >
-      <router-link to="/"><img src="../assets/logo.png" alt="대표로고" style="width:188px; float:left;"></router-link>
+      <router-link to="/"><img src="../assets/logo.png" alt="대표로고"></router-link>
     </div>
     
     <div class="header_wrapper">
@@ -20,15 +20,7 @@
 </template>
 
 <script>
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 export default {
-  components:{
-    FontAwesomeIcon,
-  },
-  data(){
-    return{
-    }
-  },
 }
 </script>
 
@@ -44,6 +36,7 @@ nav a{display:inline-block;width:110px;height:41px;line-height:42px;vertical-ali
 .router-link-exact-active{/* 라우터로 acitve된 메뉴 글씨색 */color:#4158D0;width:150px;background-color: #ffffff;}
 .header{width:100%;position: relative;}
 .toplogo{width:100%;margin:10px auto 5px auto;text-align: left;height: 40px;}
+.toplogo img{width:188px; float:left;}
 a, a:focus, a:active, a:hover, object, embed { outline: none; text-decoration: none; }
 :-moz-any-link:focus { outline: none; }
 input::-moz-focus-inner { border: 0; }

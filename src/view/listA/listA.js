@@ -1,19 +1,6 @@
 import {ko} from 'vuejs-datepicker/dist/locale'
-import { faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons'
-import { faAngleDoubleDown } from '@fortawesome/free-solid-svg-icons'
-import { faQuestionCircle } from '@fortawesome/free-solid-svg-icons'
-import { faPencilAlt } from '@fortawesome/free-solid-svg-icons'
-import { faChevronDown } from '@fortawesome/free-solid-svg-icons'
-import { faChevronUp } from '@fortawesome/free-solid-svg-icons'
-import { faPrint } from '@fortawesome/free-solid-svg-icons'
-import { faChartBar } from '@fortawesome/free-solid-svg-icons'
-import { faFileExcel } from '@fortawesome/free-solid-svg-icons'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
-import { faCog } from '@fortawesome/free-solid-svg-icons'
-import { faPlus } from '@fortawesome/free-solid-svg-icons'
-import { faMinus } from '@fortawesome/free-solid-svg-icons'
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons'
-import { faFileDownload } from '@fortawesome/free-solid-svg-icons'
 import { faShare } from '@fortawesome/free-solid-svg-icons'
 const customLabels = {
   first: '<<',
@@ -24,91 +11,48 @@ const customLabels = {
 var variable = { 
   data: function () { 
     return { 
-      ko:ko,
-      customLabels, 
+      ko:ko, customLabels, color:'#5cbfd1', 
       loading:false, isShowing:true, date:[],
-      color:'#5cbfd1', 
-      fontSize: this.$store.state.fontSize,
-      faQuestionCircle, faPencilAlt, faChevronDown, faChevronUp ,faAngleDoubleDown,faAngleDoubleUp,faPrint,faChartBar,faFileExcel,faTrashAlt,faPlus,faMinus,faFileDownload,faShare,
-      radio : 'cmp1', 
-      faSearch,faCog,
-      svcselect:'1',  window:0, multicates:[],
-      cmpChoose:'cmp1',
-      listArray:[]
+      fontSize: this.$store.state.fontSize,faTrashAlt,faShare,faSearch,
+      window:0, multicates:[], listArray:[],
     } 
   },
   computed:{
     sort:{
-      get(){
-        return this.$store.state.listA.sort
-      },
-      set(val){
-        this.$store.state.listA.sort = val;
-      }
+      get(){ return this.$store.state.listA.sort},
+      set(val){ this.$store.state.listA.sort = val;}
     },
     toticount:{
-      get(){
-          return this.$store.state.listA.toticount
-      },
-      set(val){
-          this.$store.state.listA.toticount = val;
-      }
+      get(){ return this.$store.state.listA.toticount },
+      set(val){ this.$store.state.listA.toticount = val; }
     },
     currentpage:{
-      get(){
-          return this.$store.state.listA.currentpage
-      },
-      set(val){
-          this.$store.state.listA.currentpage = val;
-      }
+      get(){ return this.$store.state.listA.currentpage },
+      set(val){ this.$store.state.listA.currentpage = val; }
     },
     countview:{
-      get(){
-          return this.$store.state.listA.countview
-      },
-      set(val){
-          this.$store.state.listA.countview = val;
-      }
+      get(){ return this.$store.state.listA.countview },
+      set(val){ this.$store.state.listA.countview = val; }
     },
     keyword:{
-      get(){
-          return this.$store.state.listA.keyword
-      },
-      set(val){
-          this.$store.state.listA.keyword = val;
-      }
+      get(){ return this.$store.state.listA.keyword },
+      set(val){ this.$store.state.listA.keyword = val; }
     },
     category:{
-      get(){
-          return this.$store.state.listA.category
-      },
-      set(val){
-          this.$store.state.listA.category = val;
-      }
+      get(){ return this.$store.state.listA.category},
+      set(val){ this.$store.state.listA.category = val; }
     },
     date1:{
-      get(){
-          return this.$store.state.listA.date1
-      },
-      set(val){
-          this.$store.state.listA.date1 = val;
-      }
+      get(){ return this.$store.state.listA.date1 },
+      set(val){ this.$store.state.listA.date1 = val; }
     },
     date2:{
-      get(){
-          return this.$store.state.listA.date2
-      },
-      set(val){
-          this.$store.state.listA.date2 = val;
-      }
+      get(){ return this.$store.state.listA.date2 },
+      set(val){ this.$store.state.listA.date2 = val; }
     },
     categories:{
-      get(){
-          return this.$store.state.listA.categories
-      },
-      set(val){
-          this.$store.state.listA.categories = val;
-      }
+      get(){ return this.$store.state.listA.categories },
+      set(val){ this.$store.state.listA.categories = val; }
     }
   }
 }
