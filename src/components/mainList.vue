@@ -1,7 +1,7 @@
 <template>
   <div class="main-content">
-    <search1 ref="search1" v-on:search1Go="search1Go"></search1>
-    <search2 ref="search2" v-on:search2Go="search2Go"></search2>
+    <search1 ref="search1" v-on:search1Go="search1Go" ></search1>
+    <search2 ref="search2" v-on:search2Go="search2Go" v-on:isShowing="isShowing" v-on:fontChange="fontChange"></search2>
     <listA ref="list"></listA>
   </div>
 </template>
@@ -21,6 +21,12 @@ export default {
       search2Go(payload){ 
         this.$refs.list.callingList(payload);
       },
+      isShowing(payload){
+        this.$refs.search1.openCheck(payload);
+      },
+      fontChange(payload){
+        this.$refs.list.fontCheck(payload);
+      }
     }
 }
 </script>

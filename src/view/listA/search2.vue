@@ -55,7 +55,6 @@
 <script>
 import inputKorean from '../../components/inputKorean.vue';
 import style from '../../lib/style.css'
-import {EventBus} from '../../eventBus.js';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import variable from './listA.js'
 import methAll from '../../include/methAll.js'
@@ -88,12 +87,12 @@ export default {
       });
     },
     fold(boolean){
-      if(boolean == false) EventBus.$emit("EB_isShowing",boolean);
-      else EventBus.$emit("EB_isShowing",boolean);
+      if(!boolean) this.$emit("isShowing",boolean);
+      else this.$emit("isShowing",boolean);
     },
     fontChange(fontSize){
       this.$store.state.fontSize = fontSize;
-      EventBus.$emit("EB_fontChange",{fontSize});
+      this.$emit("fontChange",fontSize);
     }
   }
 }

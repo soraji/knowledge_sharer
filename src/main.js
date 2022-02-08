@@ -12,11 +12,9 @@ import ToggleButton from 'vue-js-toggle-button'
 import Pagination from 'vue-pagination-2';
 import VModal from 'vue-js-modal'
 var VueScrollTo = require('vue-scrollto');
-import Affix from 'vue-affix';
 
 
 
-Vue.use(Affix);
 Vue.use(VModal,{ dialog: true });
 Vue.use(ToggleButton);
 library.add(fas);

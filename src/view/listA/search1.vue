@@ -63,13 +63,10 @@
 </template>
 
 <script>
-import style from '../../lib/style.css'
-import axios from 'axios';
-import {EventBus} from '../../eventBus.js';
-import search2 from './search2.vue'
 import Datepicker from 'vuejs-datepicker';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import cate_modal from '../modal/cateModal.vue';
+import style from '../../lib/style.css'
 import bootstrap from '../../lib/bootstrap.css'
 import bootstrapselect from '../../lib/bootstrap-select.css'
 import variable from './listA.js'
@@ -79,15 +76,8 @@ export default {
   components:{
     Datepicker,FontAwesomeIcon,cate_modal
   },
-  created(){
-    EventBus.$on("EB_isShowing", payload => {
-      if(payload == true ) this.isShowing = true;
-      else this.isShowing = false;
-    })
-  },
   watch:{
     category(val){
-      console.log('val'+val)
       this.category = val;
     }
   },
@@ -102,6 +92,10 @@ export default {
         "category" : this.category, "categories":this.categories, "date1": this.date1, "date2" : this.date2, "currentpage":1
       }
       this.$emit("search1Go",payload);
+    },
+    openCheck(){
+      if(this.isShowing) this.isShowing = false;
+      else this.isShowing = true;
     }
   }
 }

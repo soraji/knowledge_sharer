@@ -40,25 +40,25 @@
     <div v-else style="margin-top:1px;width:98%;margin:0 auto;">
       <table class="result_detail_table sticky">
         <colgroup>
-          <col style="width:10%">
-          <col style="width:8%">
-          <col style="width:8%">
+          <!-- <col style="width:10%">
+          <col style="width:8%"> -->
+          <col style="width:8%"> 
           <col style="width:10%">
           <col style="width:8%">
           <col style="width:10%">
           <col style="width:15%">
-          <col style="width:15%">
+          <!-- <col style="width:15%"> -->
           <col style="width:10%">
         </colgroup>
         <tr>
-          <th class="gugan">구간</th>
-          <th class="jijum">지점</th>
-          <th class="chamga">참가</th>
+          <!-- <th class="gugan">구간</th>
+          <th class="jijum">지점</th> -->
+          <th class="chamga">그룹</th> 
           <th class="fruits">제출과일</th>
           <th class="search">상세</th>
           <th class="name">이름</th>
           <th class="jiyuk">지역</th>
-          <th class="number">제출숫자</th>
+          <!-- <th class="number">제출숫자</th> -->
           <th class="rank">순위</th>
         </tr>
       </table>
@@ -68,47 +68,19 @@
             <!-- 반응형rowspan넣으려면 tr에 v-for넣어야함 -->
             <table class="main_list">
               <colgroup>
-                <col style="width:10%">
-                <col style="width:8%">
-                <col style="width:8%">
+                <!-- <col style="width:10%">
+                <col style="width:8%"> -->
+                <col style="width:8%"> 
                 <col style="width:10%">
                 <col style="width:8%">
                 <col style="width:10%">
                 <col style="width:15%">
-                <col style="width:15%">
+                <!-- <col style="width:15%"> -->
                 <col style="width:10%">
               </colgroup>
               <tr v-for="(item,i) in newArray" :key="item.var5"  ref="open">
-
-                <td class="gugan" v-if="item.bigRowSpan > 0"  :rowspan="item.bigRowSpan">
-                  <div v-html="item.tt1" class="gugan_title"></div>
-                  <table class="tableclassnon">
-                    <tr>
-                      <td>참가 : </td>
-                      <td>
-                        <div >{{item.chamga}}</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>비율 : </td>
-                      <td>
-                        <div >{{(( 100 / detail.chamgajasu ) * item.chamga).toFixed(1)}}</div>
-                      </td>
-                    </tr>
-                  </table> 
-                </td>
-                <td class="jijum txt_right" v-if="item.rowspan > 0" :rowspan="item.rowspan">
-                  <div >
-                    {{item.jijum}}
-                  </div>
-                </td>
-
-                <td class="chamga txt_center"  v-if="item.rowspan > 0" :rowspan="item.rowspan">
-                  <span :style="[item.count != 0 ? {}:{'visibility':'hidden'}]">{{item.count}}</span><br>
-                  <span v-if="( 100 / detail.chamgajasu ) * item.count != 0">({{ (( 100 / detail.chamgajasu ) * item.count).toFixed(1) }})</span>
-                </td>
-
-
+                
+                <td class="txt_center">{{item.var7}}</td>
                 <td class="fruits txt_center" v-if="item.fruits == '1등 기준'" :colspan="3"
                   :style="[keyfield == '1' && (keyword != '' && (item.fruits.includes(keyword) ))? {backgroundColor:'#cfecf1',color:'#000000'} : {},
                   item.fruits == '1등 기준' ? { backgroundColor:'#5cbfd1', color:'#ffffff'} : {} ]" >{{item.fruits}}
@@ -139,11 +111,6 @@
 
                 <td class="jiyuk txt_center"
                   :style="[item.fruits == '1등 기준' ? { backgroundColor:'#5cbfd1', color:'#ffffff'} : {} ]" v-html="item.jiyuk"></td>
-
-
-                <td class="number txt_right" 
-                  :style="[item.fruits == '1등 기준' ? { backgroundColor:'#5cbfd1', color:'#ffffff'} : {} ]">{{item.price}}</td>
-                
                 
                 <td class="rank txt_right" 
                   :style="[item.fruits == '1등 기준' ? { backgroundColor:'#5cbfd1', color:'#ffffff'} : {} ]">
@@ -152,7 +119,7 @@
               </tr>
 
               <tr>
-                <td colspan="13" style="padding: 5px 0 5px 8px;">참가자 : {{detail.chamgajasu}} 개 업체</td>
+                <td colspan="13" style="padding: 5px 0 5px 8px;">참가자 : {{listArray.length}} 개 업체</td>
               </tr>
             </table>
           </td>
@@ -164,7 +131,6 @@
 
 <script>
 import axios from 'axios';
-import {EventBus} from '../eventBus.js';
 import style from '../lib/style.css'
 import FadeLoader from 'vue-spinner/src/FadeLoader.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -179,7 +145,7 @@ export default {
       loading:true,color:'#5cbfd1',fontSize: this.$store.state.fontSize,
       keyfield:'1',keyword:'',jijum:[],
       guganPart:[],
-      newArray:[],
+      newArray:[]
     }
   },
   components:{
@@ -190,12 +156,11 @@ export default {
     this.callingList();
   },
   methods:{
-    async callingList(payload){
+    async callingList(){
       this.loading = true;
       try{
         const res = await axios.get('https://soraji.github.io/dummyAPI/rowspan.json');
         this.listArray = res.data.listArray;
-        this.detail = res.data.detail[0];
         this.contentFn();
       }catch(e){
         // this.slackMsg('');
@@ -204,232 +169,63 @@ export default {
       }
     },
     contentFn(){
-      let count = 0;    //사람이 있는지 카운트. 사람 1명있을때마다 ++
-      let guganPart = 0;   //구간에 사람 몇명있는지 카운트
-      let index = 0;  //rowspan할때 사용
-      let guganTot = 0; //rowspan해야할 tr의 개수
-      let gijun = 0;
+      let count = 0;
+      let count2 = 0;
+      let index = 0;
+      let index2 = 0;
 
-      let startpoint = this.detail.startpoint;
-      startpoint = parseInt(startpoint);
-
-      let endpoint = this.detail.endpoint;
-      endpoint = parseInt(endpoint) ;
-
-      for(let i=startpoint;i<=endpoint;i++) {
-        guganPart = 0;
-        guganTot = 0;
-        if( i == startpoint || i == endpoint) {  //pre예가 미만, post예가 이상 처리  
-          count = 0;
-
-          for(let p=0;p<this.listArray.length;p++) {
-              if( i == startpoint && (parseInt(this.listArray[p].var1.split(".")[0]) <= i) || (i == endpoint && (parseInt(this.listArray[p].var1.split(".")[0]) >= i) ) ){
-                count ++;
-                guganPart ++;
-                if( (i == startpoint && (parseInt(this.listArray[p].var1.split(".")[0] ) <= i)) ){  
-                  this.newArray.push({
-                    'tt1':(i+1)+'.0 <br>미만', 
-                    'tt2':0,
-                    'jijum':'',
-                    'price':this.listArray[p].var1,
-                    'fruits':this.listArray[p].var2, 
-                    'name':this.listArray[p].var3,
-                    'jiyuk':this.listArray[p].var6,
-                    'rank':this.listArray[p].var4,
-                    'pm':this.listArray[p].var5,
-                    'count':count,
-                    'rowspan':1,
-                    'colspan':0,
-                    'bigRowSpan':1,
-                    'chamga':0,
-                  }); 
-                  index++;
-                  guganTot++;
-                  
-                }else if( (i == endpoint && (parseInt(this.listArray[p].var1.split(".")[0]) >= i) ) ){
-                  this.newArray.push(
-                  {'tt1':i+'.0 <br>이상', 
-                  'tt2':0,
-                  'jijum':'',
-                  'price':this.listArray[p].var1,
-                  'fruits':this.listArray[p].var2, 
-                  'name':this.listArray[p].var3,
-                  'jiyuk':this.listArray[p].var6,
-                  'rank':this.listArray[p].var4,
-                  'pm':this.listArray[p].var5,
-                  'count':count,
-                  'rowspan':1,
-                  'colspan':0,
-                  'bigRowSpan':1,
-                  'chamga':0,
-                  }); 
-                  index++;
-                  guganTot++;
-                }
-              }
-            }
-
-            
-            if(count == 0 ){
-              if( i == startpoint  ){ 
-                this.newArray.push(
-                  {'tt1':i+'.0 % <br>미만', 
-                  'tt2':0,
-                  'jijum':'',
-                  'price':'',
-                  'fruits':'', 
-                  'name':'',
-                  'jiyuk':'',
-                  'rank':'',
-                  'pm':'',
-                  'count':'',
-                  'rowspan':1,
-                  'colspan':0,
-                  'bigRowSpan':1,
-                  'chamga':0,
-                  });
-                index++;
-                guganTot++;
-              }else if( i == endpoint ){  //이상 구간에 사람이 0일때
-                this.newArray.push(
-                  {'tt1':i+'.0 % <br>이상', 
-                  'tt2':0,
-                  'jijum':'',
-                  'price':'',
-                  'fruits':'', 
-                  'name':'',
-                  'jiyuk':'',
-                  'rank':'',
-                  'pm':'',
-                  'count':'',
-                  'rowspan':1,
-                  'colspan':0,
-                  'bigRowSpan':1,
-                  'chamga':0,
-                  });
-                index++;
-                guganTot++;
-              }
-            }else if(count > 1 ) {
-              let idx = 0;
-              for(idx=1;idx<=count;idx++) {
-                if(idx == count) {
-                  this.newArray[index-idx].rowspan = count;
-                  this.newArray[index-idx].count = count;
-                } else {
-                  this.newArray[index-idx].rowspan = 0;
-                  this.newArray[index-idx].count = 0;
-                }
-              }
-            }
-
-        } else {  //예가 사이
-          for(let j=0;j<10;j++) {
-            count = 0;
-            for(let p=0;p<this.listArray.length;p++) {
-                //예가안에서의 적격심사 기준율
-                
-                if( (parseInt(this.listArray[p].var1.split(".")[0]) == i &&  parseInt(this.listArray[p].var1.split(".")[1].substring(0,1)) == j ) && this.listArray[p].var4 == '1' && this.listArray[p].var5 == '1' ){
-                  this.newArray.push(
-                  {'tt1':i, 
-                    'tt2':0,
-                    'jijum':i+'.'+j,
-                    'price':'',
-                    'fruits':'1등 기준', 
-                    'name':'',
-                    'jiyuk':'',
-                    'count':'',
-                    'rowspan':1,
-                    'colspan':0,
-                    'bigRowSpan':1,
-                    'chamga':0,
-                  });
-                  index++;
-                  guganTot++;
-                  count++;
-                  gijun++;
-              }
+      for(let i=0;i<this.listArray.length;i++) {
         
-              
-              if(  (parseInt(this.listArray[p].var1.split(".")[0]) == i &&  parseInt(this.listArray[p].var1.split(".")[1].substring(0,1)) == j ) ) {
-                count ++;
-                guganPart ++;
-
-                this.newArray.push(
-                  {'tt1':i+'.0 %', 
-                  'tt2':j,
-                  'jijum':i+'.'+j,
-                  'price':this.listArray[p].var1,
-                  'fruits':this.listArray[p].var2, 
-                  'name':this.listArray[p].var3,
-                  'jiyuk':this.listArray[p].var6,
-                  'rank':this.listArray[p].var4,
-                  'pm':this.listArray[p].var5,
-                  'count':count,
-                  'numberOne':false,
-                  'rowspan':1,
-                  'colspan':0,
-                  'bigRowSpan':1,
-                  'chamga':0,
-                  }); 
-                  index++;
-                  guganTot++;
-              } 
+        if(this.listArray[i+1].var7 == this.listArray[i].var7){
+          // console.log(this.listArray[i].var7)
+          this.newArray.push(
+            {
+            'var7':this.listArray[i].var7,
+            'fruits':this.listArray[i].var2, 
+            'name':this.listArray[i].var3,
+            'jiyuk':this.listArray[i].var6,
+            'rank':this.listArray[i].var4,
+            'pm':this.listArray[i].var5,
+            'rowspan':1,
+            'colspan':0,
+            'bigRowSpan':1,
             }
-            
-            if(count == 0 ){
-              // if((startpoint == i &&  parseInt(this.listArray[p].var1.split(".")[1].substring(0,1)) == j )){
-              //   // 기준율 찍을때 count가 0이므로 배열값에서는 건너뛰도록 해야함
-              // }else{
-              //   //시작되는 곳의 구간을 찍는다 예를들어 98.0만 해당됨
-                
-              // }
-              this.newArray.push(
-                  {'tt1':i+'.0%', 
-                  'tt2':j,
-                  'jijum':i+'.'+j,
-                  'fruits':'', 
-                  'name':'',
-                  'jiyuk':'',
-                  'rank':'',
-                  'pm':'',
-                  'count':'',
-                  'rowspan':1,
-                  'colspan':0,
-                  'bigRowSpan':1,
-                  'chamga':0,
-                  });
-                index++;
-                guganTot++;
-            }else if(count > 1 ) {
-              let idx = 0;
-              for(idx=1;idx<=count;idx++) {
-                if(idx == count) {
-                  this.newArray[index-idx].rowspan = count;
-                  if(gijun == 1){  //적격심사기준율tr은 count에 들어가면 안됨
-                    this.newArray[index-idx].count = count-1;
-                  }else{
-                    this.newArray[index-idx].count = count;
-                  }
-                } else {
-                  this.newArray[index-idx].rowspan = 0;
-                  this.newArray[index-idx].count = 0;
-                }
-              }
+          ); 
+          count++;
+          
+        }else{  //전의 숫자와 다를때 (1에서 2로 넘어갈때 rowspan이 시작되는 곳)
+          this.newArray.push(
+          {
+            'var7':this.listArray[i].var7,
+            'fruits':this.listArray[i].var2, 
+            'name':this.listArray[i].var3,
+            'jiyuk':this.listArray[i].var6,
+            'rank':this.listArray[i].var4,
+            'pm':this.listArray[i].var5,
+            'count':1,
+            'rowspan':1,
+            'colspan':0,
             }
-          }
+          ); 
+          count2++;
         }
-        this.guganPart.push({'gugan':i,'guganTot':guganPart});
-        let ss = 0;
-        for(ss=1;ss<=guganTot;ss++) {
-          if(ss == guganTot) {
-            this.newArray[index-ss].bigRowSpan = guganTot;
-            this.newArray[index-ss].chamga = guganPart;
-          } else {
-            this.newArray[index-ss].bigRowSpan = 0;
+        index++;
+        // console.log(index)
+        console.log(count2);
+        for(let p=1; p<=count2; p++){
+          
+          if(p == count2){
+            this.newArray[index-p].rowspan = count2;
+            this.newArray[index-p].count = count2;
+          }else{
+            this.newArray[index-p].rowspan = 0;
+            this.newArray[index-p].count = 0;
           }
         }
       }
+      
+
+      
     },
     // slackMsg(text){
     // const url = "https://hooks.slack.com/services/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";

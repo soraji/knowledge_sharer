@@ -86,9 +86,7 @@
 
 <script>
 import axios from 'axios';
-import {EventBus} from '../../eventBus.js';
 import paginate from './pagination.vue';
-import style from '../../lib/style.css'
 import FadeLoader from 'vue-spinner/src/FadeLoader.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import methAll from '../../include/methAll.js'
@@ -103,9 +101,6 @@ export default {
   },
   created(){
     this.callingList();
-    EventBus.$on("EB_fontChange", payload => {
-      this.fontSize = payload.fontSize;
-    })
   },
   watch: { 
     currentpage: function(val) { //현재페이지가 변동이 있으면 즉시 업데이트 된다.
@@ -150,6 +145,9 @@ export default {
     move(url){
       window.open(url);
     },
+    fontCheck(payload){
+      this.fontSize = payload;
+    }
   }
 }
 </script>

@@ -2,6 +2,8 @@ import {ko} from 'vuejs-datepicker/dist/locale'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { faTrashAlt } from '@fortawesome/free-regular-svg-icons'
 import { faShare } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDoubleDown } from '@fortawesome/free-solid-svg-icons'
+import { faAngleDoubleUp } from '@fortawesome/free-solid-svg-icons'
 const customLabels = {
   first: '<<',
   last: '>>',
@@ -13,7 +15,7 @@ var variable = {
     return { 
       ko:ko, customLabels, color:'#5cbfd1', 
       loading:false, isShowing:true, date:[],
-      fontSize: this.$store.state.fontSize,faTrashAlt,faShare,faSearch,
+      fontSize: this.$store.state.fontSize,faTrashAlt,faShare,faSearch,faAngleDoubleDown,faAngleDoubleUp,
       window:0, multicates:[], listArray:[],
     } 
   },

@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { _ } from 'core-js';
-import {EventBus} from '../eventBus.js'
 var moment = require('moment');
 moment().format();
 
