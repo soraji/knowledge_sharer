@@ -9,7 +9,7 @@
                 <td>
                   <table style="width:555px; float:left;" class="cp_search_bar">
                     <tr>
-                      <td>참가 : {{detail.chamgajasu}} 인</td>
+                      <td>참가 : {{listArray.length}} 인</td>
                       <td>|</td>
                       <td>
                         <div>
@@ -80,7 +80,9 @@
               </colgroup>
               <tr v-for="(item,i) in newArray" :key="item.var5"  ref="open">
                 
-                <td class="txt_center">{{item.var7}}</td>
+                <td class="txt_center" v-if="item.var7 != ''" :rowspan="item.var7">{{item.var7}}</td>
+                
+
                 <td class="fruits txt_center" v-if="item.fruits == '1등 기준'" :colspan="3"
                   :style="[keyfield == '1' && (keyword != '' && (item.fruits.includes(keyword) ))? {backgroundColor:'#cfecf1',color:'#000000'} : {},
                   item.fruits == '1등 기준' ? { backgroundColor:'#5cbfd1', color:'#ffffff'} : {} ]" >{{item.fruits}}
@@ -176,25 +178,8 @@ export default {
 
       for(let i=0;i<this.listArray.length;i++) {
         
-        if(this.listArray[i+1].var7 == this.listArray[i].var7){
-          // console.log(this.listArray[i].var7)
-          this.newArray.push(
-            {
-            'var7':this.listArray[i].var7,
-            'fruits':this.listArray[i].var2, 
-            'name':this.listArray[i].var3,
-            'jiyuk':this.listArray[i].var6,
-            'rank':this.listArray[i].var4,
-            'pm':this.listArray[i].var5,
-            'rowspan':1,
-            'colspan':0,
-            'bigRowSpan':1,
-            }
-          ); 
-          count++;
-          
-        }else{  //전의 숫자와 다를때 (1에서 2로 넘어갈때 rowspan이 시작되는 곳)
-          this.newArray.push(
+
+        this.newArray.push(
           {
             'var7':this.listArray[i].var7,
             'fruits':this.listArray[i].var2, 
@@ -205,23 +190,27 @@ export default {
             'count':1,
             'rowspan':1,
             'colspan':0,
+            'idx':i
             }
           ); 
-          count2++;
-        }
-        index++;
-        // console.log(index)
-        console.log(count2);
-        for(let p=1; p<=count2; p++){
-          
-          if(p == count2){
-            this.newArray[index-p].rowspan = count2;
-            this.newArray[index-p].count = count2;
-          }else{
-            this.newArray[index-p].rowspan = 0;
-            this.newArray[index-p].count = 0;
+        
+        
+        if(this.listArray[i].var7 != this.listArray[i+1].var7){ //숫자가 바뀌는 구간. 이 tr을 기준으로 rowspan해주어야 함
+          console.log(this.newArray[i].fruits)
+
+          for(let p=1; p<this.newArray.length+1; p++){
+            if(p == parseInt(this.newArray[i].idx)){
+              
+              
+              if(p>1){
+                
+              }else{
+                this.newArray[0].rowspan = parseInt(this.newArray[i].idx)+1;
+              }
+            }
           }
         }
+        
       }
       
 
