@@ -30,17 +30,13 @@ const sampleJs={
 			let apple = this.example4(this.$refs.apple.value);
 
 
-			if (melon >= banana && apple < kiwi) {
+			if (melon >= banana && apple < melon) {
 				this.$refs.melon.style.backgroundColor = "#fff0f0";
-				this.$refs.apple.style.backgroundColor = "#fff0f0";
 				this.$refs.melon.style.color = "#000000";
-				this.$refs.apple.style.color = "#000000";
 			}
 			else {
 				this.$refs.melon.style.backgroundColor = "#ffffff";
-				this.$refs.apple.style.backgroundColor = "#ffffff";
 				this.$refs.melon.style.color = "#000000";
-				this.$refs.apple.style.color = "#000000";
 			}
 		},
 	}

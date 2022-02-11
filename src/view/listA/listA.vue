@@ -91,9 +91,14 @@ import FadeLoader from 'vue-spinner/src/FadeLoader.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import methAll from '../../include/methAll.js'
 import variable from './listA.js'
+// import {customFormatter} from './'
 
 export default {
   mixins: [variable,methAll],
+  // setup() {
+  //   const result = customFormatter();
+  //   return { result }
+  // },
   components:{
     paginate,
     FadeLoader,

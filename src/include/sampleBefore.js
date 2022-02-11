@@ -1,8 +1,7 @@
 function example1(price)
 {
-	var f1 =  document.form1; 
 	var bird = <%=bird%>;
-	var cat =  example2(f1.cat.value)
+	var cat =  example2(document.getElementById('cat').value)
 	pig = bird;
 	val = pig + ((price - bird) / (cat/100))    
 	val = Math.floor(val)
@@ -11,34 +10,28 @@ function example1(price)
 
 function example2() 
 {
-	var f1 = document.form1;
-	var price =  example3(f1.price.value)*1 ;
+	var price =  example3(document.getElementById('price').value)*1 ;
 	var amount =  example3(price);
 	if (price > 10){
-    f1.foo.value =  example4(amount)
+    document.getElementById('foo').value =  example4(amount)
 	}else{
-		f1.foo.value =  0 ; 
+		document.getElementById('foo').value =  0 ; 
 	}
 } 
 
 
 function example3()
 {
-  var f1 = document.form1;
-	var banana = 100 + parseFloat(f1.banana.value);
-	var melon = parseFloat(f1.melon.value); 
-	var apple = example4(f1.apple.value);
+	var banana = 100 + parseFloat(document.getElementById('banana').value);
+	var melon = parseFloat(document.getElementById('melon').value); 
+	var apple = example4(document.getElementById('apple').value);
 	if (melon >= banana && apple < kiwi) {
-		f1.melon.style.backgroundColor = "#FFDDDD";
-		f1.apple.style.backgroundColor = "#FFDDDD";
-		f1.melon.style.color = "#000000";
-		f1.apple.style.color = "#000000";
+		document.getElementById('melon').style.backgroundColor = "#FFDDDD";
+		document.getElementById('melon').style.color = "#000000";
 	}
 	else {
-		f1.melon.style.backgroundColor = "#ffffff";
-		f1.apple.style.backgroundColor = "#ffffff";
-		f1.melon.style.color = "#000000";
-		f1.apple.style.color = "#000000";
+		document.getElementById('melon').style.backgroundColor = "#ffffff";
+		document.getElementById('melon').style.color = "#000000";
 	}
 }
 

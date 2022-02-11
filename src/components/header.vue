@@ -31,9 +31,9 @@ nav{display:inline-block;border-radius:2px;width:100%;}
 .nav_ch{width:98%;margin:10px auto;}
 .nav_box{display:table;height:40px;line-height:36px;font-weight:bold;vertical-align: middle;color:#ffffff;font-size:14px;text-align: center;text-decoration:none !important;cursor: pointer;border-collapse: collapse;}
 .nav_box div{display:table-cell;width:150px;border-right:1px solid #9FACE6;border-left:1px solid #9FACE6;border-collapse: collapse;height:40px;line-height:40px;}
-nav a{display:inline-block;width:110px;height:41px;line-height:42px;vertical-align: middle;color:#ffffff;font-weight:bold;font-size:14px;text-align: center;text-decoration:none !important;}
+nav a{display:inline-block;width:110px;height:43px;line-height:42px;vertical-align: middle;color:#ffffff;font-weight:bold;font-size:14px;text-align: center;text-decoration:none !important;}
 
-.router-link-exact-active{/* 라우터로 acitve된 메뉴 글씨색 */color:#4158D0;width:150px;background-color: #ffffff;}
+.router-link-exact-active{/* 라우터로 acitve된 메뉴 글씨색 */color:#4158D0;width:150px;height:41px;background-color: #ffffff;}
 .header{width:100%;position: relative;}
 .toplogo{width:100%;margin:10px auto 5px auto;text-align: left;height: 40px;}
 .toplogo img{width:188px; float:left;}
